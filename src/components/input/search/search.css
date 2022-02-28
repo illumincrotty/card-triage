@@ -1,0 +1,13 @@
+input[type='search'] {
+	background: transparent;
+	border: none;
+	border-bottom: 0.1em solid var(--dark);
+	outline: none;
+
+	min-width: 10rem;
+}
+
+input[type='search']:focus-visible {
+	background: white;
+	box-shadow: var(--shadow-elevation-low);
+}

@@ -1,0 +1,11 @@
+ul {
+	max-width: 100%;
+}
+ul > * {
+	margin-top: var(--gap);
+}
+
+.underline {
+	padding-bottom: 0.5ch;
+	border-bottom: 0.1em solid black;
+}

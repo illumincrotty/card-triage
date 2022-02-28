@@ -1,0 +1,42 @@
+.card {
+	border: solid var(--dark) 0.1em;
+	line-height: 1.5;
+	background: var(--light);
+}
+.card > * {
+	width: 100%;
+}
+
+.state-button {
+	display: block;
+	margin-left: auto;
+	background: transparent;
+	border: 0.1em solid var(--dark);
+	outline-width: 0;
+	outline-style: solid;
+	outline-color: black;
+}
+.button-done {
+	outline-color: red;
+}
+.button-done:active {
+	background: hsl(0, 100%, 50%, 0.1);
+}
+
+.button-todo {
+	outline-color: green;
+}
+.button-todo:active {
+	background: hsl(120, 100%, 50%, 0.1);
+}
+
+.state-button:hover,
+.state-button:focus-visible {
+	box-shadow: var(--shadow-elevation-low);
+	outline-width: 0.1em;
+}
+
+/* .state-button:active {
+	background-color: var(--dark);
+	color: var(--light);
+} */

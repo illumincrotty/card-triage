@@ -1,13 +1,112 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root {
+	--gap: 2em;
+	--dark: rgb(45, 47, 51);
+	--light: hsl(330, 25%, 95%);
+	--accent: #83b9a9;
+	--measure: 60em;
+	background: var(--accent);
+	color: var(--dark);
+
+	--shadow-color: 0deg 0% 0%;
+	--shadow-elevation-low: 0px 0.7px 0.9px hsl(var(--shadow-color) / 0.1),
+		0px 1.3px 1.6px -0.9px hsl(var(--shadow-color) / 0.12),
+		0px 3.2px 3.9px -1.9px hsl(var(--shadow-color) / 0.14);
+	--shadow-elevation-medium: 0px 0.7px 0.9px hsl(var(--shadow-color) / 0.1),
+		0px 2.9px 3.5px -0.6px hsl(var(--shadow-color) / 0.12),
+		-0.1px 6.9px 8.4px -1.3px hsl(var(--shadow-color) / 0.14),
+		-0.2px 16.2px 19.7px -1.9px hsl(var(--shadow-color) / 0.15);
+	--shadow-elevation-high: 0px 0.7px 0.9px hsl(var(--shadow-color) / 0.1),
+		-0.1px 6px 7.3px -0.3px hsl(var(--shadow-color) / 0.1),
+		-0.2px 11.2px 13.6px -0.5px hsl(var(--shadow-color) / 0.11),
+		-0.2px 17.9px 21.7px -0.8px hsl(var(--shadow-color) / 0.12),
+		-0.4px 27.5px 33.4px -1.1px hsl(var(--shadow-color) / 0.13),
+		-0.6px 41.6px 50.5px -1.4px hsl(var(--shadow-color) / 0.13),
+		-0.8px 61.8px 75.1px -1.6px hsl(var(--shadow-color) / 0.14),
+		-1.2px 89.7px 109px -1.9px hsl(var(--shadow-color) / 0.15);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+*,
+*:before,
+*::after {
+	font-family: inherit;
+}
+
+body {
+	height: fit-content;
+	width: 100%;
+	/* padding: 1rem 1rem; */
+	margin: 0;
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+	line-break: loose;
+	line-height: 1.2rem;
+	text-align: start;
+	position: relative;
+	font-family: 'Atkinson Hyperlegible', -apple-system, BlinkMacSystemFont,
+		'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
+		'Droid Sans', 'Helvetica Neue', sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+button {
+	cursor: pointer;
+}
+
+.unlist {
+	list-style-type: none;
+	padding: 0;
+	margin-bottom: unset;
+	margin-top: var(--gap, 0);
+}
+
+.stack {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: var(--gap);
+}
+
+.box {
+	padding: var(--gap);
+}
+
+/* 
+ * Utility class to hide content visually while keeping it screen reader-accessible.
+ * Source: https://www.scottohara.me/blog/2017/04/14/inclusively-hidden.html 
+ */
+.sr-only:not(:focus):not(:active) {
+	clip: rect(0 0 0 0);
+	clip-path: inset(100%);
+	height: 1px;
+	overflow: hidden;
+	position: absolute;
+	white-space: nowrap;
+	width: 1px;
+}
+
+/* a modified version of faster box shadows adapted from https://alligator.io/css/transition-box-shadows/ */
+.shadow {
+	position: relative;
+	z-index: 1;
+}
+
+.shadow::before {
+	--shadow: var(--shadow-elevation-medium);
+	content: ' ';
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	pointer-events: none;
+
+	box-shadow: var(--shadow);
+
+	opacity: 0;
+	transition: opacity 500ms;
+}
+
+.shadow:hover::before {
+	opacity: 1;
 }
